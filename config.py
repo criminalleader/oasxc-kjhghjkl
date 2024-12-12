@@ -54,13 +54,13 @@ STREAM_LOGS = environ.get('STREAM_LOGS','-1001895607162')
 FORWARD_AS_COPY = bool(os.environ.get("FORWARD_AS_COPY", True))
 
 # NAMA OWNER
-OWNER = os.environ.get("OWNER", "sewxiy")
+# OWNER = os.environ.get("OWNER", "")
 
 #OWNER ID
-OWNER_ID = int(os.environ.get("OWNER_ID", ""))
+# OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 
 #Port
-PORT = os.environ.get("PORT", "8030")
+PORT = os.environ.get("PORT", "8080")
 
 #Database
 DB_URI = os.environ.get("DATABASE_URL", "")
@@ -98,7 +98,6 @@ DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
 USER_REPLY_TEXT = "🚫 ᴏʜ ɴᴏ! ᴡʜᴇʀᴇ'ʀᴇ ʏᴏᴜʀ ʜᴀɴᴅs?!"
 
-ADMINS.append(OWNER_ID)
 
 LOG_FILE_NAME = "filesharingbot.txt"
 
@@ -116,7 +115,6 @@ logging.basicConfig(
     ]
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
 
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)

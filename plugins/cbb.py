@@ -61,6 +61,38 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
             return
         
+    elif data.startswith("get_embed_code"):
+        _, log_id, file_name = data.split(":")
+        try:
+            # Generate the embed URL
+            lazy_embed = f"{URL}/embed/{log_id}/{file_name}?hash={get_hash(log_id)}"
+
+            # Create the HTML embed code
+            embed_code = f"""
+            <div style="position: relative; padding-bottom: 56.25%; height: 0">
+                <iframe
+                    src="{lazy_embed}"
+                    scrolling="no"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+                </iframe>
+            </div>
+            """
+
+            # Send the embed code to the user
+            await query.message.reply_text(
+                text=f"Here is your embed code:\n\n<code>{embed_code}</code>",
+                quote=True,
+                disable_web_page_preview=True,
+                parse_mode="HTML"
+            )
+        except Exception as e:
+            print(e)
+            await query.answer(f"☣ Unable to generate embed code\n\n{e}", show_alert=True)
+
     elif data == "close":
         await query.message.delete()
         try:
