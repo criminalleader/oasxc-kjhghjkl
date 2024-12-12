@@ -46,10 +46,12 @@ APP_ID = int(os.environ.get("APP_ID", ""))
 API_HASH = os.environ.get("API_HASH", "")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
+CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", ""))
 
 # setup log channels id for bot to send file
 STREAM_LOGS = environ.get('STREAM_LOGS','-1001895607162')
+# 
+FORWARD_AS_COPY = bool(os.environ.get("FORWARD_AS_COPY", True))
 
 # NAMA OWNER
 OWNER = os.environ.get("OWNER", "sewxiy")
